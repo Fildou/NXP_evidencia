@@ -1,0 +1,50 @@
+{% extends 'partials/base.html' %}
+{% block title %}Inventory{% endblock %}
+
+{% block content %}
+{% include 'partials/topside.html' %}
+<div class="row mt-4">
+            <div class="col-md-2">
+                <div class="card">
+                    <div class="card-header text-white" style="background-color: #ffb800;">
+                        Filters
+                    </div>
+                    <div class="card-body">
+
+                    </div>
+                </div>
+            </div>
+             <div class="col-md-10">
+        <table class="table bg-white">
+            <thead class="bg-info text-white">
+                <tr>
+                    <th scope="col" style="background-color: #ffb800;">Item Name</th>
+                    <th scope="col" style="background-color: #ffb800;">Item PN</th>
+                    <th scope="col" style="background-color: #ffb800;">Item Type</th>
+                    <th scope="col" style="background-color: #ffb800;">Inventory number</th>
+                    <th scope="col" style="background-color: #ffb800;">Owned by</th>
+                    <th scope="col" style="background-color: #ffb800;">Status</th>
+                    <th scope="col" style="background-color: #ffb800;">Location</th>
+                    <th scope="col" style="background-color: #ffb800;">Placement</th>
+                    <th scope="col" style="background-color: #ffb800;">Edit</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in item %}
+                <tr>
+                    <td>{{ item.item_name }}</td>
+                    <td>{{ item.item_PN }}</td>
+                    <td>{{ item.item_type }}</td>
+                    <td>{{ item.inventory_number }}</td>
+                    <td>{{ item.team }}</td>
+                    <td>{{ item.full_count }}</td>
+                    <td>{{ item.free_count }}</td>
+                    <td>{{ item.location }}</td>
+                    <td>{{ item.placement }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}
