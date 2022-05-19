@@ -48,10 +48,7 @@ class Item(models.Model):
     item_name = models.CharField(max_length=100)
     item_PN = models.CharField(max_length=100)
     item_type = models.CharField(max_length=50, choices=TYPE)
-    inventory_number = models.CharField(max_length=15)
     team = models.CharField(max_length=50, choices=TEAM)
-    full_count = models.PositiveIntegerField()
-    free_count = models.PositiveIntegerField()
     location = models.CharField(max_length=50, choices=LOCATION)
     placement = models.CharField(max_length=50)
 

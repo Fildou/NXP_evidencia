@@ -1,5 +1,5 @@
 {% extends 'partials/base.html' %}
-{% block title %}Borrowed items{% endblock %}
+{% block title %}Borrowed{% endblock %}
 
 {% block content %}
 {% include 'partials/topside.html' %}
@@ -9,21 +9,27 @@
         <table class="table bg-white">
             <thead class="bg-info text-white">
                 <tr>
-                    <th scope="col">Product</th>
-                    <th scope="col">Category</th>
-                    <th scope="col">Quantity</th>
-                    <th scope="col">Odered by</th>
+                    <th scope="col" style="background-color: #ffb800;">Item</th>
+                    <th scope="col" style="background-color: #ffb800;">Item PN</th>
+                    <th scope="col" style="background-color: #ffb800;">Odered by</th>
+                    <th scope="col" style="background-color: #ffb800;">Date</th>
+                    <th scope="col" style="background-color: #ffb800;"></th>
                 </tr>
             </thead>
             <tbody>
-                {% for order in order %}
+                {% for borrowed in borrowed %}
                 <tr>
                     <td>{{ borrowed.item_name }}</td>
+                    <td>{{ borrowed.item_PN }}</td>
+                    <td>{{ borrowed.user.username }}</td>
+                    <td>{{ borrowed.date }}</td>
+                    <td>
+                        <a  class="btn btn-secondary">Return</a>
+                    </td>
                 </tr>
                 {% endfor %}
             </tbody>
         </table>
     </div>
 </div>
-
 {% endblock %}
