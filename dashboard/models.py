@@ -48,17 +48,17 @@ class Item(models.Model):
     item_name = models.CharField(max_length=100)
     item_PN = models.CharField(max_length=100)
     item_type = models.CharField(max_length=50, choices=TYPE)
+    item_count = models.IntegerField(null=True)
     team = models.CharField(max_length=50, choices=TEAM)
     location = models.CharField(max_length=50, choices=LOCATION)
-    placement = models.CharField(max_length=50)
 
 
 
     def __str__(self):
-        return f'{self.item_name}-{self.full_count}'
+        return f'{self.item_name}'
 
 class Borrowed_item(models.Model):
-    item = models.ForeignKey(Item, on_delete=models.CASCADE)
+    item = models.ForeignKey(Item, on_delete=models.CASCADE, blank=True, null=True)
     user = models.ForeignKey(User, models.CASCADE)
     date = models.DateTimeField(auto_now_add=True)
 

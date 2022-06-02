@@ -19,12 +19,12 @@
             <tbody>
                 {% for borrowed in borrowed %}
                 <tr>
-                    <td>{{ borrowed.item_name }}</td>
-                    <td>{{ borrowed.item_PN }}</td>
+                    <td>{{ borrowed.item.item_name }}</td>
+                    <td>{{ borrowed.item.item_PN }}</td>
                     <td>{{ borrowed.user.username }}</td>
                     <td>{{ borrowed.date }}</td>
                     <td>
-                        <a  class="btn btn-secondary">Return</a>
+                         <a href="{% url 'dashboard-detail' borrowed.item.item_PN %}" class="btn btn-secondary">Details</a>
                     </td>
                 </tr>
                 {% endfor %}
