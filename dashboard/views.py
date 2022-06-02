@@ -34,16 +34,16 @@ def borrowed(request):
 def detail(request, item_PN):
     item = Item.objects.get(item_PN=item_PN)
     if 'borrow' in request.POST:
-        Borrowed_item.objects.create(item=item, user=request.user)
-        if item.item_count > 0:
-            item.item_count = item.item_count - 1
+        if item.item_stock == 'Yes':
+            item.item_stock = 'No'
             item.save()
+            Borrowed_item.objects.create(item=item, user=request.user)
         else:
             messages.info(request, 'There are no more free items of this type')
         return redirect('dashboard-borrowed')
     if 'return' in request.POST:
         Borrowed_item.objects.filter(item=item).delete()
-        item.item_count = item.item_count + 1
+        item.item_stock = 'Yes'
         item.save()
         return redirect('dashboard-index')
     return render(request, 'dashboard/detail.html', {'item': item})

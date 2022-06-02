@@ -42,13 +42,17 @@ TEAM = (
     ('Secure Provisioning SDK', 'Secure Provisioning SDK'),
 )
 
+ITEM_STOCK = (
+    ('Yes', 'Yes'),
+    ('No', 'No'),
+)
 
 
 class Item(models.Model):
     item_name = models.CharField(max_length=100)
     item_PN = models.CharField(max_length=100)
     item_type = models.CharField(max_length=50, choices=TYPE)
-    item_count = models.IntegerField(null=True)
+    item_stock = models.CharField(max_length=5, choices=ITEM_STOCK)
     team = models.CharField(max_length=50, choices=TEAM)
     location = models.CharField(max_length=50, choices=LOCATION)
 
@@ -56,6 +60,7 @@ class Item(models.Model):
 
     def __str__(self):
         return f'{self.item_name}'
+
 
 class Borrowed_item(models.Model):
     item = models.ForeignKey(Item, on_delete=models.CASCADE, blank=True, null=True)

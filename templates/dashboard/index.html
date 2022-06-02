@@ -26,9 +26,9 @@
                     <td>{{ item.item_PN }}</td>
                     <td>{{ item.item_type }}</td>
                     <td>{{ item.team }}</td>
-                    <td>{{ item.item_count }}</td>
+                    <td>{{ item.item_stock }}</td>
                     <td>{{ item.location }}</td>
-                    {% if item.item_count > 0 %}
+                    {% if item.item_stock == 'Yes' %}
                     <td>
                         <a href="{% url 'dashboard-detail' item.item_PN %}" class="btn btn-secondary">Details</a>
                     </td>
